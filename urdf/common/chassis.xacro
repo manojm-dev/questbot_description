@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="chassis">
+    
+        <!-- Base Link -->
+        <link name="base_footprint" />
+
+        <!-- Robot Footprint -->
+        <link name="base_link" />
+
+        <joint name="base_joint" type="fixed">
+            <parent link="base_footprint" />
+            <child link="base_link" />
+            <origin xyz="0.0 0.0 ${chassis_ground_clearance + chassis_height / 2}" rpy="0 0 0" />
+        </joint>
+
+        <!-- Chassis -->
+        <link name="chassis_link">
+            <visual>
+                <geometry>
+                    <box size="${chassis_length} ${chassis_width} ${chassis_height}" />
+                </geometry>
+                <material name="Cyan"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="${chassis_length} ${chassis_width} ${chassis_height}" />
+                </geometry>
+            </collision>
+            <xacro:box_inertia mass="${chassis_mass}" width="${chassis_width}" length="${chassis_length}" height="${chassis_height}" />
+        </link>
+
+        <joint name="chassis_joint" type="fixed">
+            <parent link="base_link" />
+            <child link="chassis_link" />
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        </joint>
+
+    </xacro:macro>
+
+</robot>

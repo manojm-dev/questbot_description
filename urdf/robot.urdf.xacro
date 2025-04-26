@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="questbot_2wdd">
+    
+    <!-- Properties -->
+    <xacro:include filename="properties.xacro"/>
+
+    <!-- Include -->
+
+    <!-- Inertial -->
+    <xacro:include filename="$(find questbot_description)/urdf/common/inertial.xacro"/>
+    <!-- Materials -->
+    <xacro:include filename="$(find questbot_description)/urdf/common/materials.xacro"/>
+    <!-- Chassis -->
+    <xacro:include filename="$(find questbot_description)/urdf/common/chassis.xacro"/>
+    <!-- Wheel -->
+    <xacro:include filename="$(find questbot_description)/urdf/common/wheel.xacro"/>
+    <!-- Castor Wheel -->
+    <xacro:include filename="$(find questbot_description)/urdf/common/castor.xacro"/>
+
+
+    <!-- Chassis -->
+    <xacro:chassis />
+
+    <!-- Wheels -->
+    <xacro:if value="$(arg use_2wd)">
+        <!-- Wheels -->
+        <xacro:wheel name="left_wheel" wheel_side_sign="-1"/>
+        <xacro:wheel name="right_wheel" wheel_side_sign="1"/>
+        
+        <!-- Castors -->
+        <xacro:castor_wheel name="front_left_castor_wheel"  x_divide="3.0" wheel_end_sign="1" y_divide="4.0" wheel_side_sign="-1"/>
+        <xacro:castor_wheel name="front_right_castor_wheel"  x_divide="3.0" wheel_end_sign="1" y_divide="4.0" wheel_side_sign="1"/>
+
+        <xacro:castor_wheel name="back_left_castor_wheel"  x_divide="3.0" wheel_end_sign="-1" y_divide="4.0" wheel_side_sign="-1"/>
+        <xacro:castor_wheel name="back_right_castor_wheel"  x_divide="3.0" wheel_end_sign="-1" y_divide="4.0" wheel_side_sign="1"/>
+    </xacro:if>
+
+</robot>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <!-- Include inertial macros -->
+    <xacro:include filename="inertial.xacro" />
+
+    <!-- Castor Wheel Macro -->
+    <xacro:macro name="castor_wheel" params="name x_divide wheel_end_sign y_divide wheel_side_sign">
+
+        <link name="${name}_link">
+            <visual>
+                <geometry>
+                    <sphere radius="${castor_wheel_radius}" />
+                </geometry>
+                <material name="gray">
+                    <color rgba="0.3 0.3 0.3 1.0" />
+                </material>            
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <sphere radius="${castor_wheel_radius}" />
+                </geometry>
+            </collision>
+
+            <xacro:sphere_inertia mass="${castor_mass}" radius="${castor_wheel_radius}" />
+        </link>
+
+        <joint name="${name}_joint" type="fixed">
+            <parent link="chassis_link" />
+            <child link="${name}_link" />
+            <origin xyz="${wheel_end_sign * (chassis_length / x_divide)} ${wheel_side_sign * (chassis_width / y_divide)} ${- (chassis_height / 2.0)}" rpy="0 0 0" />
+        </joint>
+
+        <gazebo reference="front_caster">
+            <material>Gazebo/Grey</material>
+            <mu1 value="0.001" />
+            <mu2 value="0.001" />
+        </gazebo>
+        
+    </xacro:macro>
+
+</robot>
