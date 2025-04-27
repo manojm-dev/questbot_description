@@ -21,6 +21,11 @@
         <xacro:property name="castor_wheel_radius" value="${chassis_ground_clearance}"/>
         <xacro:property name="castor_mass" value="0.1"/>
 
+        <!-- Lidar -->
+        <xacro:property name="lidar_width" value="0.0508"/>
+        <xacro:property name="lidar_thickness" value="0.055"/>
+        <xacro:property name="lidar_mass" value="0.125"/>
+
     </xacro:if>
 
 </robot>

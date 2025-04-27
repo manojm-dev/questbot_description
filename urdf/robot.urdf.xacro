@@ -16,7 +16,8 @@
     <xacro:include filename="$(find questbot_description)/urdf/common/wheel.xacro"/>
     <!-- Castor Wheel -->
     <xacro:include filename="$(find questbot_description)/urdf/common/castor.xacro"/>
-
+    <!-- Sensors -->
+    <xacro:include filename="$(find questbot_description)/urdf/sensors/sensors.xacro"/>
 
     <!-- Chassis -->
     <xacro:chassis />
@@ -33,6 +34,9 @@
 
         <xacro:castor_wheel name="back_left_castor_wheel"  x_divide="3.0" wheel_end_sign="-1" y_divide="4.0" wheel_side_sign="-1"/>
         <xacro:castor_wheel name="back_right_castor_wheel"  x_divide="3.0" wheel_end_sign="-1" y_divide="4.0" wheel_side_sign="1"/>
+
+        <!-- Lidar -->
+         <xacro:lidar name="lidar" x="0.0" y="0.0" z="${(chassis_height + lidar_thickness) / 2.0}" />
     </xacro:if>
 
 </robot>
