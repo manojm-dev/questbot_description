@@ -12,9 +12,7 @@
                 <geometry>
                     <sphere radius="${castor_wheel_radius}" />
                 </geometry>
-                <material name="gray">
-                    <color rgba="0.3 0.3 0.3 1.0" />
-                </material>            
+                <material name="Grey"/>     
             </visual>
 
             <collision>
@@ -28,15 +26,19 @@
         </link>
 
         <joint name="${name}_joint" type="fixed">
-            <parent link="chassis_link" />
+            <parent link="base_link" />
             <child link="${name}_link" />
             <origin xyz="${wheel_end_sign * (chassis_length / x_divide)} ${wheel_side_sign * (chassis_width / y_divide)} ${- (chassis_height / 2.0)}" rpy="0 0 0" />
         </joint>
 
-        <gazebo reference="front_caster">
+        <gazebo reference="${name}_link">
             <material>Gazebo/Grey</material>
-            <mu1 value="0.001" />
-            <mu2 value="0.001" />
+            <mu1>0.1</mu1>
+            <mu2>0.1</mu2> 
+            <kp>100000.0</kp> 
+            <kd>10.0</kd> 
+            <minDepth>0.001</minDepth> 
+            <maxVel>0.1</maxVel>
         </gazebo>
         
     </xacro:macro>

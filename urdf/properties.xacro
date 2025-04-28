@@ -12,7 +12,7 @@
         <xacro:property name="chassis_ground_clearance" value="0.05" />
 
         <!-- Wheels -->
-        <xacro:property name="wheel_radius" value="${(chassis_height / 2.0) + chassis_ground_clearance}"/>
+        <xacro:property name="wheel_radius" value="${(chassis_height / 3.0) + chassis_ground_clearance}"/>
         <xacro:property name="wheel_width" value="0.05" />
         <xacro:property name="wheel_mass" value="0.1" />
         <xacro:property name="wheel_gap" value="0.01"/>
@@ -21,10 +21,16 @@
         <xacro:property name="castor_wheel_radius" value="${chassis_ground_clearance}"/>
         <xacro:property name="castor_mass" value="0.1"/>
 
+        <!-- Diff Drive -->
+         <xacro:property name="publish_odom_tf" value="true"/>
+
         <!-- Lidar -->
         <xacro:property name="lidar_width" value="0.0508"/>
         <xacro:property name="lidar_thickness" value="0.055"/>
         <xacro:property name="lidar_mass" value="0.125"/>
+        <xacro:property name="visualize_lidar" value="false">
+        
+        </xacro:property>
 
     </xacro:if>
 

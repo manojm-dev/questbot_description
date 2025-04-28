@@ -23,6 +23,7 @@ def generate_launch_description():
                 'xacro '        , xacro_file,
                 ' use_gazebo:=' , 'false',
                 ' use_gzsim:='  , 'false',
+                ' use_2wd:='    , 'true',
             ])
         }]
     )

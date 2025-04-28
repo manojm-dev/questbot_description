@@ -9,9 +9,7 @@
                 <geometry>
                     <cylinder radius="${lidar_width}" length="${lidar_thickness}" />
                 </geometry>
-                <material name="green">
-                    <color rgba="0.0 1.0 0.0 1.0" />
-                </material>                          
+                <material name="Green"/>                     
             </visual>
             <collision>
                 <origin xyz="0 0 0" rpy="0 0 0" />
@@ -23,7 +21,7 @@
         </link>
     
         <joint name="${name}_joint" type="fixed">
-            <parent link="chassis_link" />
+            <parent link="base_link" />
             <child link="${name}_link" />
             <origin xyz="${x} ${y} ${z}" rpy="0 0 0" />
         </joint>
@@ -33,7 +31,7 @@
             <material>Gazebo/Green</material>
             <sensor name="lidar" type="ray">
                 <always_on>true</always_on>
-                <visualize>true</visualize>
+                <visualize>${visualize_lidar}</visualize>
                 <update_rate>5</update_rate>
                 <ray>
                     <scan>

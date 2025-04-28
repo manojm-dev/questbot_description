@@ -7,21 +7,12 @@
         <link name="base_footprint" />
 
         <!-- Robot Footprint -->
-        <link name="base_link" />
-
-        <joint name="base_joint" type="fixed">
-            <parent link="base_footprint" />
-            <child link="base_link" />
-            <origin xyz="0.0 0.0 ${chassis_ground_clearance + chassis_height / 2}" rpy="0 0 0" />
-        </joint>
-
-        <!-- Chassis -->
-        <link name="chassis_link">
+        <link name="base_link">
             <visual>
                 <geometry>
                     <box size="${chassis_length} ${chassis_width} ${chassis_height}" />
                 </geometry>
-                <material name="Cyan"/>
+                <material name="Turquoise"/>
             </visual>
             <collision>
                 <geometry>
@@ -31,11 +22,15 @@
             <xacro:box_inertia mass="${chassis_mass}" width="${chassis_width}" length="${chassis_length}" height="${chassis_height}" />
         </link>
 
-        <joint name="chassis_joint" type="fixed">
+        <joint name="base_joint" type="fixed">
             <parent link="base_link" />
-            <child link="chassis_link" />
-            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+            <child link="base_footprint" />
+            <origin xyz="0.0 0.0 -${chassis_ground_clearance + chassis_height / 2}" rpy="0 0 0" />
         </joint>
+
+        <gazebo reference="base_link">
+            <material>Gazebo/Turquoise</material>
+        </gazebo>
 
     </xacro:macro>
 

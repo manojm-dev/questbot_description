@@ -18,6 +18,9 @@
     <xacro:include filename="$(find questbot_description)/urdf/common/castor.xacro"/>
     <!-- Sensors -->
     <xacro:include filename="$(find questbot_description)/urdf/sensors/sensors.xacro"/>
+    <!-- Drives -->
+    <xacro:include filename="$(find questbot_description)/urdf/drives/drives.xacro"/>
+     
 
     <!-- Chassis -->
     <xacro:chassis />
@@ -25,15 +28,18 @@
     <!-- Wheels -->
     <xacro:if value="$(arg use_2wd)">
         <!-- Wheels -->
-        <xacro:wheel name="left_wheel" wheel_side_sign="-1"/>
-        <xacro:wheel name="right_wheel" wheel_side_sign="1"/>
+        <xacro:wheel name="left_wheel" wheel_side_sign="1"/>
+        <xacro:wheel name="right_wheel" wheel_side_sign="-1"/>
+
+        <!-- Diff Drive -->
+        <xacro:diffdrive left_wheel_name="left_wheel" right_wheel_name="right_wheel"/>
         
         <!-- Castors -->
-        <xacro:castor_wheel name="front_left_castor_wheel"  x_divide="3.0" wheel_end_sign="1" y_divide="4.0" wheel_side_sign="-1"/>
-        <xacro:castor_wheel name="front_right_castor_wheel"  x_divide="3.0" wheel_end_sign="1" y_divide="4.0" wheel_side_sign="1"/>
+        <xacro:castor_wheel name="front_left_castor_wheel"  x_divide="3.0" wheel_end_sign="1" y_divide="4.0" wheel_side_sign="1"/>
+        <xacro:castor_wheel name="front_right_castor_wheel"  x_divide="3.0" wheel_end_sign="1" y_divide="4.0" wheel_side_sign="-1"/>
 
-        <xacro:castor_wheel name="back_left_castor_wheel"  x_divide="3.0" wheel_end_sign="-1" y_divide="4.0" wheel_side_sign="-1"/>
-        <xacro:castor_wheel name="back_right_castor_wheel"  x_divide="3.0" wheel_end_sign="-1" y_divide="4.0" wheel_side_sign="1"/>
+        <xacro:castor_wheel name="back_left_castor_wheel"  x_divide="3.0" wheel_end_sign="-1" y_divide="4.0" wheel_side_sign="1"/>
+        <xacro:castor_wheel name="back_right_castor_wheel"  x_divide="3.0" wheel_end_sign="-1" y_divide="4.0" wheel_side_sign="-1"/>
 
         <!-- Lidar -->
          <xacro:lidar name="lidar" x="0.0" y="0.0" z="${(chassis_height + lidar_thickness) / 2.0}" />

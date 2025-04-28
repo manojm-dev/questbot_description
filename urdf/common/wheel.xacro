@@ -14,7 +14,7 @@
                 <geometry>
                     <cylinder radius="${wheel_radius}" length="${wheel_width}" />
                 </geometry>
-                <material name="Grey"/>                                
+                <material name="Orange"/>                                
             </visual>
             <collision>
                 <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
@@ -26,24 +26,23 @@
         </link>
 
         <joint name="${name}_joint" type="continuous">
-            <parent link="chassis_link" />
+            <parent link="base_link" />
             <child link="${name}_link" />
             <origin
-                xyz="0.0 ${(wheel_side_sign * (chassis_width + wheel_width + wheel_gap)) / 2.0} 0.0"
+                xyz="0.0 ${(wheel_side_sign * (chassis_width + wheel_width + wheel_gap)) / 2.0} ${wheel_radius - (chassis_ground_clearance + chassis_height / 2.0)}"
                 rpy="0 0 0" />
             <axis xyz="0 1 0" />
         </joint>
 
 
         <gazebo reference="${name}_link">
-            <material>Gazebo/Grey</material>
-            <mu1>1000000000000000.0</mu1>
-            <mu2>1000000000000000.0</mu2>
-            <kp>1000000000000.0</kp>
+            <material>Gazebo/Orange</material>
+            <mu1>1.0</mu1>
+            <mu2>1.0</mu2>
+            <kp>100000.0</kp>
             <kd>10.0</kd>
             <minDepth>0.001</minDepth>
             <maxVel>0.1</maxVel>
-            <fdir1>1 0 0</fdir1>
         </gazebo>
 
     </xacro:macro>

@@ -18,7 +18,11 @@
     <color rgba="1 1 0 1"/>
   </material>
 
-  <material name="Cyan">
+  <material name="Orange">
+    <color rgba="1 0.647 0 1"/>
+  </material>
+
+  <material name="Turquoise">
     <color rgba="0 1 1 1"/>
   </material>
 

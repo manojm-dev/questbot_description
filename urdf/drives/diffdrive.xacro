@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <xacro:macro name="diffdrive" params="left_wheel_name right_wheel_name">
+
+        <gazebo>
+            <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+    
+                <!-- wheels -->
+                <left_joint>${left_wheel_name}_joint</left_joint>
+                <right_joint>${right_wheel_name}_joint</right_joint>
+    
+                <!-- kinematics -->
+                <wheel_separation>${chassis_width + wheel_gap}</wheel_separation>
+                <wheel_radius>${wheel_radius}</wheel_radius>
+
+                <!-- limits -->
+                <max_wheel_torque>20</max_wheel_torque>
+                <max_wheel_acceleration>1.0</max_wheel_acceleration>
+    
+                <!-- output -->
+                <updateRate>100</updateRate>
+                <publish_odom>true</publish_odom>
+                <publish_odom_tf>${publish_odom_tf}</publish_odom_tf>
+                <publish_wheel_tf>true</publish_wheel_tf>
+    
+                <odometry_frame>odom</odometry_frame>
+                <robot_base_frame>base_link</robot_base_frame>
+            </plugin>
+        </gazebo>
+
+    </xacro:macro>
+
+</robot>
