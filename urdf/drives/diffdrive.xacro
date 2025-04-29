@@ -13,6 +13,7 @@
                 <!-- kinematics -->
                 <wheel_separation>${chassis_width + wheel_gap}</wheel_separation>
                 <wheel_radius>${wheel_radius}</wheel_radius>
+                <wheel_diameter>${wheel_radius * 2}</wheel_diameter>
 
                 <!-- limits -->
                 <max_wheel_torque>20</max_wheel_torque>
