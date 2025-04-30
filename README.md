@@ -5,21 +5,26 @@
 ## Overview
 This repository contains the ROS2 launch files, descriptions, and configurations for the **QuestBot** robot. The project is designed to work with different modules like robot state publishing, RViz visualization, and more, making it easy to set up and extend. 
 
-## 🛠️ Build Instructions
 
-```bash
-cd ~/ros2_ws/src
-git clone https://github.com/manojm-dev/questbot_description.git
-cd ..
-colcon build --packages-select questbot_description
-source install/setup.bash
+## 🧑‍💻 Setup
+
+1. 📂 Clone the repository
+```
+mkdir -p ~/ros_ws/src
+cd ~/ros_ws/src
+git clone  https://github.com/manojm-dev/questbot_description.git
 ```
 
-## 📦 Installing Dependencies
-
+2) 📦 Install dependencies
 ```
-cd ~/ros2_ws
+cd ~/ros_ws
 sudo apt-get update -y && rosdep update && rosdep install --from-paths src --ignore-src -y
+```
+
+3) 🛠️ Building the packages
+```
+cd ~/ros_ws
+colcon build
 ```
 
 ## Usage
