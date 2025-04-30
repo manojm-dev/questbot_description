@@ -11,22 +11,6 @@ def generate_launch_description():
         'urdf',
         'robot.urdf.xacro'
     ])
-    
-    robot_state_publisher = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        name='robot_state_publisher',
-        output='screen',
-        parameters=[{
-            'use_sim_time'      : True,
-            'robot_description': Command([
-                'xacro '        , xacro_file,
-                ' use_gazebo:=' , 'false',
-                ' use_gzsim:='  , 'false',
-                ' use_2wd:='    , 'true',
-            ])
-        }]
-    )
 
     return LaunchDescription([
         Node(
