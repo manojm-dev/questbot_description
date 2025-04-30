@@ -28,7 +28,7 @@
         <xacro:property name="lidar_width" value="0.0508"/>
         <xacro:property name="lidar_thickness" value="0.055"/>
         <xacro:property name="lidar_mass" value="0.125"/>
-        <xacro:property name="visualize_lidar" value="true"/>
+        <xacro:property name="visualize_lidar" value="false"/>
         <xacro:property name="lidar_min_range" value="0.12"/>
         <xacro:property name="lidar_max_range" value="30.0"/>
 
